@@ -606,41 +606,37 @@
   </div>
 </div>
 <script>
-  // Fungsi untuk membuka modal dan mengisi datanya secara dinamis
   function openModal(imgSrc, title, perangkats, lokasi, keterangan) {
     const modal = document.getElementById('imageModal');
-    const modalImage = document.getElementById('modalImage');
+    // Disesuaikan dengan ID di HTML lu: "modalImg"
+    const modalImg = document.getElementById('modalImg');
     const modalTitle = document.getElementById('modalTitle');
-    const modalPerangkat = document.getElementById('modalPerangkat');
-    const modalLokasi = document.getElementById('modalLokasi');
-    const modalKeterangan = document.getElementById('modalKeterangan');
 
-    // Update elemen HTML di dalam modal
-    modalImage.src = imgSrc;
-    modalTitle.textContent = title;
-    modalPerangkat.textContent = perangkats;
-    modalLokasi.textContent = lokasi;
-    modalKeterangan.textContent = keterangan;
+    if (!modal || !modalImg) {
+      console.error("Elemen modal atau modalImg tidak ditemukan!");
+      return;
+    }
 
-    // Tampilkan modal (hilangkan class 'hidden')
+    // Set source gambar & title
+    modalImg.src = imgSrc;
+    if (modalTitle) {
+      modalTitle.textContent = title;
+    }
+
+    // Tampilkan Modal
     modal.classList.remove('hidden');
-    
-    // Matikan scroll pada halaman utama saat modal terbuka
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden'; // Mencegah scroll di background
   }
 
-  // Fungsi untuk menutup modal
   function closeModal() {
     const modal = document.getElementById('imageModal');
-    
-    // Sembunyikan modal (tambahkan class 'hidden')
-    modal.classList.add('hidden');
-    
-    // Aktifkan kembali scroll pada halaman
-    document.body.style.overflow = 'auto';
+    if (modal) {
+      modal.classList.add('hidden');
+      document.body.style.overflow = 'auto'; // Mengembalikan scroll
+    }
   }
 
-  // Event Listener: Tutup modal kalau tombol ESC ditekan
+  // Close modal saat tombol ESC ditekan
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
       closeModal();
