@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Romi Putra, A.Md. | IT Infrastructure & Endpoint Management Engineer</title>
   
@@ -14,7 +14,6 @@
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -32,6 +31,7 @@
       <div class="hidden md:flex gap-6 text-sm text-slate-300 font-medium">
         <a href="#about" class="hover:text-blue-400 transition">About</a>
         <a href="#skills" class="hover:text-blue-400 transition">Competencies</a>
+        <a href="#topologies" class="hover:text-blue-400 transition">Topologies</a>
         <a href="#experience" class="hover:text-blue-400 transition">Experience</a>
         <a href="#certifications" class="hover:text-blue-400 transition">Certifications</a>
         <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
@@ -43,11 +43,11 @@
   <!-- Hero Section -->
   <section id="about" class="pt-32 pb-20 px-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
     <div class="flex-1 space-y-6">
-  <!-- Badge Status Interaktif -->
-    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-4">
-      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-      <span>System Status: Available for Opportunities</span>
-    </div>
+      <!-- Badge Status Interaktif -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-4">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>System Status: Available for Opportunities</span>
+      </div>
       <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
         Romi Putra, <span class="text-blue-400">A.Md.</span>
       </h1>
@@ -64,10 +64,10 @@
         <span class="flex items-center gap-1.5"><i class="fa-solid fa-phone text-blue-400"></i> +62 812-7522-9929</span>
         
         <!-- Email Direct Link -->
-        <a href="mailto:romi17mei@gmail.com?subject=Tawaran%20Kerjasama%20/ %20Inquiry" 
+        <a href="mailto:romi17mei@gmail.com?subject=Tawaran%20Kerjasama%20/%20Inquiry" 
            class="flex items-center gap-2 hover:text-blue-400 transition">
-        <i class="fa-solid fa-envelope text-blue-500"></i>
-        <span>romi17mei@gmail.com</span>
+          <i class="fa-solid fa-envelope text-blue-500"></i>
+          <span>romi17mei@gmail.com</span>
         </a>
         
         <!-- Link WhatsApp -->
@@ -75,9 +75,9 @@
            target="_blank" 
            rel="noopener noreferrer" 
            class="flex items-center gap-2 hover:text-emerald-400 transition">
-        <i class="fa-brands fa-whatsapp text-emerald-500"></i>
-        <span>Contact via WhatsApp</span>
-  </a>
+          <i class="fa-brands fa-whatsapp text-emerald-500"></i>
+          <span>Contact via WhatsApp</span>
+        </a>
       </div>
       
       <!-- Key Stats -->
@@ -193,103 +193,263 @@
     </div>
   </section>
 
-  <!-- Professional Experience -->
-  <section id="experience" class="py-20 max-w-6xl mx-auto px-6">
-    <div class="text-center max-w-xl mx-auto mb-16">
-      <h2 class="text-2xl md:text-3xl font-bold">Professional Experience</h2>
-      <p class="text-slate-400 text-sm mt-2">A track record of technical delivery across banking, national projects, and ISP operations.</p>
+  <!-- Section Topologi Jaringan (Assets Gallery) -->
+  <section id="topologies" class="py-20 max-w-6xl mx-auto px-6">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold flex items-center justify-center gap-3">
+        <i class="fa-solid fa-diagram-project text-blue-400"></i> Network Topologies & Projects
+      </h2>
+      <p class="text-slate-400 text-sm mt-2">Dokumentasi arsitektur jaringan, infrastruktur CCTV, dan pemetaan intranet/LAN. Klik gambar untuk memperbesar.</p>
     </div>
 
-    <div class="space-y-12">
-      
-      <!-- Experience 1: PT. Bank SMBC Indonesia Tbk -->
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 md:p-8 space-y-6">
-        <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-800 pb-4 gap-2">
-          <div>
-            <h3 class="text-xl font-bold text-blue-400">IT Branch Service Engineer</h3>
-            <p class="text-base text-slate-200 font-semibold">PT. Bank SMBC Indonesia Tbk</p>
-            <p class="text-xs text-slate-400 mt-1">
-              Managed via Vendors: PT Intikom Berlian Mustika (Oct 2024–Present) | PT. Samafitro (Apr 2021–Sep 2024) | PT Mitra Infoparama (Apr 2018–Mar 2021)
-            </p>
+    <!-- Grid Gambar Assets -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- 1. Indarung 4 -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-blue-500/50 transition flex flex-col group cursor-pointer" onclick="openModal('assets/net cctv indarrung 4.png', 'Network CCTV Indarung 4')">
+        <div class="relative overflow-hidden bg-slate-950 h-44">
+          <img src="assets/net cctv indarrung 4.png" alt="Net CCTV Indarung 4" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
+            <span class="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-full flex items-center gap-1 shadow">
+              <i class="fa-solid fa-magnifying-glass-plus"></i> Perbesar
+            </span>
           </div>
-          <span class="px-3 py-1 bg-slate-800 border border-slate-700 text-blue-400 text-xs font-mono rounded-full self-start md:self-center">
-            Apr 2018 – Present
-          </span>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-slate-300">
-          <div>
-            <h4 class="font-bold text-slate-100 mb-2 border-b border-slate-800 pb-1">Endpoint Management</h4>
-            <ul class="space-y-1.5 list-disc list-inside text-xs text-slate-400">
-              <li>Executed Windows 11 upgrades, BIOS, and firmware updates.</li>
-              <li>Deployed Microsoft 365 apps and role-based Outlook configs.</li>
-              <li>Enrolled endpoints into VMware Workspace ONE.</li>
-              <li>Configured VPN access (Workspace ONE Tunnel & MobilePASS+).</li>
-              <li>Coordinated BitLocker encryption rollouts across branches.</li>
-              <li>Managed ServiceNow incident documentation and remote support.</li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="font-bold text-slate-100 mb-2 border-b border-slate-800 pb-1">Infrastructure Projects</h4>
-            <ul class="space-y-1.5 list-disc list-inside text-xs text-slate-400">
-              <li>Supported Fortinet SD-WAN deployment (ATM, Voice, App connectivity).</li>
-              <li>Modernized enterprise endpoints by deploying ~100 Mini PCs.</li>
-              <li>Handled branch relocation and closure infrastructure activities.</li>
-              <li>Validated Panasonic TES824 PABX, enterprise MFDs, and shared scanners.</li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="font-bold text-slate-100 mb-2 border-b border-slate-800 pb-1">Security & Asset Lifecycle</h4>
-            <ul class="space-y-1.5 list-disc list-inside text-xs text-slate-400">
-              <li>Maintained Sophos endpoint protection and update remediations.</li>
-              <li>Executed secure data sanitization using Active@ KillDisk.</li>
-              <li>Performed secure tablet wipes and storage media health verification for disposal.</li>
-            </ul>
-          </div>
+        <div class="p-4 flex-grow">
+          <h3 class="font-bold text-sm text-slate-100">Net CCTV Indarung 4</h3>
+          <p class="text-xs text-slate-400 mt-1">Skema infrastruktur CCTV area Indarung 4.</p>
         </div>
       </div>
 
-      <!-- Experience 2: PT. Compnet Integrator -->
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 md:p-8 space-y-4">
-        <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-800 pb-4 gap-2">
-          <div>
-            <h3 class="text-xl font-bold text-blue-400">Field Technician - Project Korlantas</h3>
-            <p class="text-base text-slate-200 font-semibold">PT. Compnet Integrator (Department Professional Services)</p>
+      <!-- 2. Kompi Tabing -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-blue-500/50 transition flex flex-col group cursor-pointer" onclick="openModal('assets/net cctv kompi tabing.png', 'Network CCTV Kompi Tabing')">
+        <div class="relative overflow-hidden bg-slate-950 h-44">
+          <img src="assets/net cctv kompi tabing.png" alt="Net CCTV Kompi Tabing" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
+            <span class="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-full flex items-center gap-1 shadow">
+              <i class="fa-solid fa-magnifying-glass-plus"></i> Perbesar
+            </span>
           </div>
-          <span class="px-3 py-1 bg-slate-800 border border-slate-700 text-blue-400 text-xs font-mono rounded-full self-start md:self-center">
-            Nov 2017 – Feb 2018
-          </span>
         </div>
-        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-300 list-disc list-inside">
-          <li>Prepared project sites for SIM Online implementation with network cabling, power, workstations, and printers.</li>
-          <li>Installed Windows OS, SIM Online software, antivirus, and peripherals across workstations.</li>
-          <li>Validated end-to-end functionality including network connectivity, file sharing, and physical SIM printing prior to go-live.</li>
-          <li>Delivered operational training for registration, examination, and printing personnel.</li>
-          <li>Configured SIM Online application connectivity for mobile registration units using USB modems.</li>
-        </ul>
+        <div class="p-4 flex-grow">
+          <h3 class="font-bold text-sm text-slate-100">Net CCTV Kompi Tabing</h3>
+          <p class="text-xs text-slate-400 mt-1">Topologi jaringan CCTV Kompi Tabing.</p>
+        </div>
       </div>
 
-      <!-- Experience 3: CV. Utama Jaya Mandiri -->
-      <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 md:p-8 space-y-4">
-        <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-800 pb-4 gap-2">
-          <div>
-            <h3 class="text-xl font-bold text-blue-400">Lead Network Engineer</h3>
-            <p class="text-base text-slate-200 font-semibold">CV. Utama Jaya Mandiri</p>
+      <!-- 3. Karang Putiah -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-blue-500/50 transition flex flex-col group cursor-pointer" onclick="openModal('assets/net cctv karang putiah.png', 'Network CCTV Karang Putiah')">
+        <div class="relative overflow-hidden bg-slate-950 h-44">
+          <img src="assets/net cctv karang putiah.png" alt="Net CCTV Karang Putiah" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
+            <span class="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-full flex items-center gap-1 shadow">
+              <i class="fa-solid fa-magnifying-glass-plus"></i> Perbesar
+            </span>
           </div>
-          <span class="px-3 py-1 bg-slate-800 border border-slate-700 text-blue-400 text-xs font-mono rounded-full self-start md:self-center">
-            Jan 2012 – Aug 2017
-          </span>
         </div>
-        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-300 list-disc list-inside">
-          <li>Coordinated two field technician teams for installation requests and priority incidents.</li>
-          <li>Conducted wireless site surveys collecting GPS coordinates and LOS evaluations using Google Earth and The Dude.</li>
-          <li>Installed and maintained Ubiquiti wireless radios, CPEs, switches, and remote CCTV integrations.</li>
-          <li>Configured MikroTik routers via Winbox (DHCP, NAT, Simple Queue bandwidth management, and firewall rules).</li>
-        </ul>
+        <div class="p-4 flex-grow">
+          <h3 class="font-bold text-sm text-slate-100">Net CCTV Karang Putiah</h3>
+          <p class="text-xs text-slate-400 mt-1">Desain pemetaan CCTV site Karang Putiah.</p>
+        </div>
       </div>
 
+      <!-- 4. Toko Ida -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-blue-500/50 transition flex flex-col group cursor-pointer" onclick="openModal('assets/net cctv toko ida.png', 'Network CCTV Toko Ida')">
+        <div class="relative overflow-hidden bg-slate-950 h-44">
+          <img src="assets/net cctv toko ida.png" alt="Net CCTV Toko Ida" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
+            <span class="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-full flex items-center gap-1 shadow">
+              <i class="fa-solid fa-magnifying-glass-plus"></i> Perbesar
+            </span>
+          </div>
+        </div>
+        <div class="p-4 flex-grow">
+          <h3 class="font-bold text-sm text-slate-100">Net CCTV Toko Ida</h3>
+          <p class="text-xs text-slate-400 mt-1">Arsitektur jaringan CCTV Toko Ida.</p>
+        </div>
+      </div>
+
+      <!-- 5. EDGNL -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-blue-500/50 transition flex flex-col group cursor-pointer" onclick="openModal('assets/net cctv edgnl.png', 'Network CCTV EDGNL')">
+        <div class="relative overflow-hidden bg-slate-950 h-44">
+          <img src="assets/net cctv edgnl.png" alt="Net CCTV EDGNL" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
+            <span class="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-full flex items-center gap-1 shadow">
+              <i class="fa-solid fa-magnifying-glass-plus"></i> Perbesar
+            </span>
+          </div>
+        </div>
+        <div class="p-4 flex-grow">
+          <h3 class="font-bold text-sm text-slate-100">Net CCTV EDGNL</h3>
+          <p class="text-xs text-slate-400 mt-1">Sistem integrasi CCTV EDGNL.</p>
+        </div>
+      </div>
+
+      <!-- 6. CV Utama Jaya Mandiri -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-blue-500/50 transition flex flex-col group cursor-pointer" onclick="openModal('assets/net cv utama jaya mandiri.png', 'Network CV Utama Jaya Mandiri')">
+        <div class="relative overflow-hidden bg-slate-950 h-44">
+          <img src="assets/net cv utama jaya mandiri.png" alt="Net CV Utama Jaya Mandiri" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
+            <span class="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-full flex items-center gap-1 shadow">
+              <i class="fa-solid fa-magnifying-glass-plus"></i> Perbesar
+            </span>
+          </div>
+        </div>
+        <div class="p-4 flex-grow">
+          <h3 class="font-bold text-sm text-slate-100">CV Utama Jaya Mandiri</h3>
+          <p class="text-xs text-slate-400 mt-1">Infrastruktur ISP & Node Jaringan.</p>
+        </div>
+      </div>
+
+      <!-- 7. Intra Unand -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-blue-500/50 transition flex flex-col group cursor-pointer" onclick="openModal('assets/intra unand.png', 'Intranet Unand')">
+        <div class="relative overflow-hidden bg-slate-950 h-44">
+          <img src="assets/intra unand.png" alt="Intra Unand" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
+            <span class="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-full flex items-center gap-1 shadow">
+              <i class="fa-solid fa-magnifying-glass-plus"></i> Perbesar
+            </span>
+          </div>
+        </div>
+        <div class="p-4 flex-grow">
+          <h3 class="font-bold text-sm text-slate-100">Intranet Unand</h3>
+          <p class="text-xs text-slate-400 mt-1">Skema jaringan Intranet internal.</p>
+        </div>
+      </div>
+
+      <!-- 8. Local Firia -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-blue-500/50 transition flex flex-col group cursor-pointer" onclick="openModal('assets/net local firia.png', 'Network Local Firia')">
+        <div class="relative overflow-hidden bg-slate-950 h-44">
+          <img src="assets/net local firia.png" alt="Net Local Firia" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+          <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
+            <span class="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-full flex items-center gap-1 shadow">
+              <i class="fa-solid fa-magnifying-glass-plus"></i> Perbesar
+            </span>
+          </div>
+        </div>
+        <div class="p-4 flex-grow">
+          <h3 class="font-bold text-sm text-slate-100">Net Local Firia</h3>
+          <p class="text-xs text-slate-400 mt-1">Topologi Local Area Network (LAN) Firia.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Modal Pop-up Preview Gambar Topologi -->
+  <div id="imageModal" class="fixed inset-0 bg-slate-950/90 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm" onclick="closeModal()">
+    <div class="relative max-w-5xl w-full bg-slate-900 border border-slate-800 rounded-xl p-3" onclick="event.stopPropagation()">
+      <div class="flex justify-between items-center p-2 mb-2 border-b border-slate-800">
+        <h4 id="modalTitle" class="text-sm font-bold text-slate-200">Preview Topologi</h4>
+        <button onclick="closeModal()" class="p-1 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-white transition">
+          <i class="fa-solid fa-xmark text-lg px-2"></i>
+        </button>
+      </div>
+      <div class="overflow-auto max-h-[80vh] flex justify-center bg-slate-950 rounded-lg p-2">
+        <img id="modalImg" src="" alt="Topologi Preview" class="max-w-full h-auto object-contain">
+      </div>
+    </div>
+  </div>
+
+  <!-- Professional Experience -->
+  <section id="experience" class="py-20 bg-slate-900/30 border-t border-slate-800/60">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center max-w-xl mx-auto mb-16">
+        <h2 class="text-2xl md:text-3xl font-bold">Professional Experience</h2>
+        <p class="text-slate-400 text-sm mt-2">A track record of technical delivery across banking, national projects, and ISP operations.</p>
+      </div>
+
+      <div class="space-y-12">
+        
+        <!-- Experience 1: PT. Bank SMBC Indonesia Tbk -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 md:p-8 space-y-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-800 pb-4 gap-2">
+            <div>
+              <h3 class="text-xl font-bold text-blue-400">IT Branch Service Engineer</h3>
+              <p class="text-base text-slate-200 font-semibold">PT. Bank SMBC Indonesia Tbk</p>
+              <p class="text-xs text-slate-400 mt-1">
+                Managed via Vendors: PT Intikom Berlian Mustika (Oct 2024–Present) | PT. Samafitro (Apr 2021–Sep 2024) | PT Mitra Infoparama (Apr 2018–Mar 2021)
+              </p>
+            </div>
+            <span class="px-3 py-1 bg-slate-800 border border-slate-700 text-blue-400 text-xs font-mono rounded-full self-start md:self-center">
+              Apr 2018 – Present
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-slate-300">
+            <div>
+              <h4 class="font-bold text-slate-100 mb-2 border-b border-slate-800 pb-1">Endpoint Management</h4>
+              <ul class="space-y-1.5 list-disc list-inside text-xs text-slate-400">
+                <li>Executed Windows 11 upgrades, BIOS, and firmware updates.</li>
+                <li>Deployed Microsoft 365 apps and role-based Outlook configs.</li>
+                <li>Enrolled endpoints into VMware Workspace ONE.</li>
+                <li>Configured VPN access (Workspace ONE Tunnel & MobilePASS+).</li>
+                <li>Coordinated BitLocker encryption rollouts across branches.</li>
+                <li>Managed ServiceNow incident documentation and remote support.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="font-bold text-slate-100 mb-2 border-b border-slate-800 pb-1">Infrastructure Projects</h4>
+              <ul class="space-y-1.5 list-disc list-inside text-xs text-slate-400">
+                <li>Supported Fortinet SD-WAN deployment (ATM, Voice, App connectivity).</li>
+                <li>Modernized enterprise endpoints by deploying ~100 Mini PCs.</li>
+                <li>Handled branch relocation and closure infrastructure activities.</li>
+                <li>Validated Panasonic TES824 PABX, enterprise MFDs, and shared scanners.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="font-bold text-slate-100 mb-2 border-b border-slate-800 pb-1">Security & Asset Lifecycle</h4>
+              <ul class="space-y-1.5 list-disc list-inside text-xs text-slate-400">
+                <li>Maintained Sophos endpoint protection and update remediations.</li>
+                <li>Executed secure data sanitization using Active@ KillDisk.</li>
+                <li>Performed secure tablet wipes and storage media health verification for disposal.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience 2: PT. Compnet Integrator -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 md:p-8 space-y-4">
+          <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-800 pb-4 gap-2">
+            <div>
+              <h3 class="text-xl font-bold text-blue-400">Field Technician - Project Korlantas</h3>
+              <p class="text-base text-slate-200 font-semibold">PT. Compnet Integrator (Department Professional Services)</p>
+            </div>
+            <span class="px-3 py-1 bg-slate-800 border border-slate-700 text-blue-400 text-xs font-mono rounded-full self-start md:self-center">
+              Nov 2017 – Feb 2018
+            </span>
+          </div>
+          <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-300 list-disc list-inside">
+            <li>Prepared project sites for SIM Online implementation with network cabling, power, workstations, and printers.</li>
+            <li>Installed Windows OS, SIM Online software, antivirus, and peripherals across workstations.</li>
+            <li>Validated end-to-end functionality including network connectivity, file sharing, and physical SIM printing prior to go-live.</li>
+            <li>Delivered operational training for registration, examination, and printing personnel.</li>
+            <li>Configured SIM Online application connectivity for mobile registration units using USB modems.</li>
+          </ul>
+        </div>
+
+        <!-- Experience 3: CV. Utama Jaya Mandiri -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 md:p-8 space-y-4">
+          <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-800 pb-4 gap-2">
+            <div>
+              <h3 class="text-xl font-bold text-blue-400">Lead Network Engineer</h3>
+              <p class="text-base text-slate-200 font-semibold">CV. Utama Jaya Mandiri</p>
+            </div>
+            <span class="px-3 py-1 bg-slate-800 border border-slate-700 text-blue-400 text-xs font-mono rounded-full self-start md:self-center">
+              Jan 2012 – Aug 2017
+            </span>
+          </div>
+          <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-300 list-disc list-inside">
+            <li>Coordinated two field technician teams for installation requests and priority incidents.</li>
+            <li>Conducted wireless site surveys collecting GPS coordinates and LOS evaluations using Google Earth and The Dude.</li>
+            <li>Installed and maintained Ubiquiti wireless radios, CPEs, switches, and remote CCTV integrations.</li>
+            <li>Configured MikroTik routers via Winbox (DHCP, NAT, Simple Queue bandwidth management, and firewall rules).</li>
+          </ul>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -372,9 +532,9 @@
           <i class="fa-solid fa-phone text-blue-400"></i> +62 812-7522-9929
         </a>
         <a href="https://wa.me/6281275229929?text=Halo%20Romi,%20saya%20tertarik%20dengan%20profil%20Anda." 
-         target="_blank" 
-         rel="noopener noreferrer" 
-         class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-5 py-2.5 rounded-lg transition duration-300 shadow-md">
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-5 py-2.5 rounded-lg transition duration-300 shadow-md">
         <i class="fa-brands fa-whatsapp text-lg"></i>
         <span>Hubungi via WhatsApp</span>
         </a>
@@ -391,6 +551,26 @@
       </div>
     </div>
   </footer>
+
+  <!-- Script Modal Pop-up Interaktif -->
+  <script>
+    function openModal(imageSrc, title) {
+      document.getElementById('modalImg').src = imageSrc;
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('imageModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').classList.add('hidden');
+    }
+
+    // Modal tutup jika menekan tombol Escape di keyboard
+    document.addEventListener('keydown', function(event) {
+      if (event.key === "Escape") {
+        closeModal();
+      }
+    });
+  </script>
 
 </body>
 </html>
