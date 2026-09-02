@@ -660,14 +660,14 @@
 
     if (!modal || !modalImg) return;
 
-    // Isi data ke elemen modal
+    // Isi data dari atribut onclick ke elemen modal
     modalImg.src = imgSrc;
-    if (modalTitle) modalTitle.textContent = title || 'Preview Topologi';
+    if (modalTitle) modalTitle.textContent = title || 'Detail Topologi';
     if (modalPerangkat) modalPerangkat.textContent = perangkats || '-';
     if (modalLokasi) modalLokasi.textContent = lokasi || '-';
     if (modalKeterangan) modalKeterangan.textContent = keterangan || '-';
 
-    // Tampilkan modal
+    // Tampilkan modal & matikan scroll background
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
   }
@@ -680,7 +680,7 @@
     }
   }
 
-  // Close modal pakai tombol ESC
+  // Tutup modal pakai tombol ESC
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeModal();
   });
