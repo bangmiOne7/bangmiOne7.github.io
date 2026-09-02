@@ -556,51 +556,64 @@
   
 <!-- STRUKTUR HTML MODAL-->
 <!-- ========================================== -->
-<div id="imageModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto" onclick="closeModal()">
-  
-  <!-- Modal Box (Stop Propagation agar klik di dalam gambar/teks gak menutup modal) -->
-  <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-4xl w-full overflow-hidden shadow-2xl relative my-8" onclick="event.stopPropagation()">
+<!-- Modal Pop-up Preview Gambar & Detail Topologi -->
+<div id="imageModal" class="fixed inset-0 bg-slate-950/90 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm" onclick="closeModal()">
+  <div class="relative max-w-4xl w-full bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-2xl my-8 flex flex-col max-h-[90vh]" onclick="event.stopPropagation()">
     
-    <!-- Tombol Close -->
-    <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-9 h-9 bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white rounded-full flex items-center justify-center transition">
-      <i class="fa-solid fa-xmark text-lg"></i>
-    </button>
+    <!-- Modal Header -->
+    <div class="flex justify-between items-center p-4 border-b border-slate-800 bg-slate-900/50">
+      <h4 id="modalTitle" class="text-base font-bold text-slate-100">Preview Topologi</h4>
+      <button onclick="closeModal()" class="p-1.5 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-white transition flex items-center justify-center">
+        <i class="fa-solid fa-xmark text-lg px-1"></i>
+      </button>
+    </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2">
-      <!-- Area Gambar -->
-      <div class="bg-slate-950 flex items-center justify-center p-4 min-h-[300px]">
-        <img id="modalImage" src="" alt="Modal Image" class="max-h-[70vh] w-auto object-contain rounded-lg">
+    <!-- Modal Body (Grid Gambar & Detail) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 overflow-y-auto">
+      
+      <!-- Container Gambar -->
+      <div class="overflow-auto flex items-center justify-center bg-slate-950 p-4 border-b md:border-b-0 md:border-r border-slate-800 min-h-[280px]">
+        <img id="modalImg" src="" alt="Topologi Preview" class="max-w-full h-auto max-h-[60vh] object-contain rounded-lg">
       </div>
 
-      <!-- Area Detail Informasi -->
-      <div class="p-6 flex flex-col justify-between space-y-4">
-        <div>
-          <h2 id="modalTitle" class="text-xl font-bold text-white mb-4 border-b border-slate-800 pb-2"></h2>
+      <!-- Container Detail Teks -->
+      <div class="p-5 flex flex-col justify-between space-y-4 bg-slate-900">
+        <div class="space-y-4">
           
-          <div class="space-y-3 text-sm">
-            <div>
-              <span class="text-slate-400 block text-xs font-semibold uppercase tracking-wider">Perangkat Utama</span>
-              <p id="modalPerangkat" class="text-slate-200 font-medium mt-0.5"></p>
-            </div>
-            
-            <div>
-              <span class="text-slate-400 block text-xs font-semibold uppercase tracking-wider">Cakupan Lokasi</span>
-              <p id="modalLokasi" class="text-slate-200 font-medium mt-0.5"></p>
-            </div>
-
-            <div>
-              <span class="text-slate-400 block text-xs font-semibold uppercase tracking-wider">Deskripsi / Output</span>
-              <p id="modalKeterangan" class="text-slate-300 mt-0.5 leading-relaxed"></p>
-            </div>
+          <!-- Perangkat Utama -->
+          <div>
+            <span class="text-slate-400 block text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-microchip text-blue-400"></i> Perangkat Utama
+            </span>
+            <p id="modalPerangkat" class="text-slate-200 font-medium text-sm mt-1 bg-slate-950/50 p-2.5 rounded-lg border border-slate-800/80"></p>
           </div>
+          
+          <!-- Cakupan Lokasi -->
+          <div>
+            <span class="text-slate-400 block text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-location-dot text-blue-400"></i> Cakupan Lokasi
+            </span>
+            <p id="modalLokasi" class="text-slate-200 font-medium text-sm mt-1 bg-slate-950/50 p-2.5 rounded-lg border border-slate-800/80"></p>
+          </div>
+
+          <!-- Keterangan / Output -->
+          <div>
+            <span class="text-slate-400 block text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-circle-info text-blue-400"></i> Deskripsi / Output
+            </span>
+            <p id="modalKeterangan" class="text-slate-300 text-xs mt-1 leading-relaxed bg-slate-950/50 p-2.5 rounded-lg border border-slate-800/80"></p>
+          </div>
+
         </div>
 
-        <div class="pt-4 border-t border-slate-800 flex justify-end">
+        <!-- Tombol Tutup bawah -->
+        <div class="pt-3 border-t border-slate-800 flex justify-end">
           <button onclick="closeModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium rounded-lg transition">
             Tutup
           </button>
         </div>
       </div>
+
     </div>
 
   </div>
@@ -608,41 +621,41 @@
 <script>
   function openModal(imgSrc, title, perangkats, lokasi, keterangan) {
     const modal = document.getElementById('imageModal');
-    // Disesuaikan dengan ID di HTML lu: "modalImg"
     const modalImg = document.getElementById('modalImg');
     const modalTitle = document.getElementById('modalTitle');
+    const modalPerangkat = document.getElementById('modalPerangkat');
+    const modalLokasi = document.getElementById('modalLokasi');
+    const modalKeterangan = document.getElementById('modalKeterangan');
 
     if (!modal || !modalImg) {
-      console.error("Elemen modal atau modalImg tidak ditemukan!");
+      console.error("Elemen modal tidak ditemukan!");
       return;
     }
 
-    // Set source gambar & title
+    // Assign data dari parameter onclick ke elemen modal
     modalImg.src = imgSrc;
-    if (modalTitle) {
-      modalTitle.textContent = title;
-    }
+    if (modalTitle) modalTitle.textContent = title || '-';
+    if (modalPerangkat) modalPerangkat.textContent = perangkats || '-';
+    if (modalLokasi) modalLokasi.textContent = lokasi || '-';
+    if (modalKeterangan) modalKeterangan.textContent = keterangan || '-';
 
-    // Tampilkan Modal
+    // Tampilkan modal & kunci scroll background
     modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden'; // Mencegah scroll di background
+    document.body.style.overflow = 'hidden';
   }
 
   function closeModal() {
     const modal = document.getElementById('imageModal');
     if (modal) {
       modal.classList.add('hidden');
-      document.body.style.overflow = 'auto'; // Mengembalikan scroll
+      document.body.style.overflow = 'auto';
     }
   }
 
-  // Close modal saat tombol ESC ditekan
+  // Event listener tombol ESC
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      closeModal();
-    }
+    if (e.key === 'Escape') closeModal();
   });
 </script>
-
 </body>
 </html>
