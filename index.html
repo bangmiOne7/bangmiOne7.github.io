@@ -731,17 +731,26 @@
     });
   </script>
 
-  <script>
-  // Menggunakan CountAPI gratisan
-  // Ganti 'bangmiOne7.github.io' dengan domain/username unik lu
-  fetch('https://api.countapi.xyz/hit/bangmiOne7.github.io/visits')
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById('visit-count').innerText = data.value.toLocaleString();
-    })
-    .catch(err => {
-      // Fallback jika API gagal/block
-      document.getElementById('visit-count').innerText = '1,250+';
+<script>
+    // Visitor Counter Fetch API via CounterAPI.dev
+    document.addEventListener('DOMContentLoaded', function() {
+      const elements = document.querySelectorAll('.visit-count-val');
+      
+      // Menggunakan CounterAPI.dev (Gratis & Stabil)
+      fetch('https://api.counterapi.dev/v1/bangmiOne7_portfolio/visits/up')
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.count) {
+            const formattedCount = data.count.toLocaleString();
+            elements.forEach(el => el.textContent = formattedCount);
+          } else {
+            elements.forEach(el => el.textContent = '1');
+          }
+        })
+        .catch(err => {
+          // Jika first load atau network issue, tampilkan angka mulai dari 1
+          elements.forEach(el => el.textContent = '1');
+        });
     });
   </script>
 </body>
