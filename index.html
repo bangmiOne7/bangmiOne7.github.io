@@ -51,10 +51,11 @@
         <span>System Status: Available for Opportunities</span>
       </div>
 <!-- Visitor Counter Badge-->
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-xs font-mono">
-          <i class="fa-solid fa-eye text-blue-400"></i>
-      <span>Total Visits: <strong class="visit-count-val text-blue-400">...</strong></span>
-      </div><br/>
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-xs font-mono">
+      <i class="fa-solid fa-eye text-blue-400"></i>
+    <span>Visits: </span>
+      <img src="https://api.visitorbadge.io/api/visitors?path=bangmiOne7.github.io&countColor=%2360a5fa&style=flat&labelColor=%230f172a" alt="Visits" class="h-4 inline-block">
+    </div>
       
       <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
         Romi Putra, <span class="text-blue-400">A.Md.</span>
@@ -731,33 +732,5 @@
       if (e.key === 'Escape') closeModal();
     });
   </script>
-
-<script>
-  // Visitor Counter Fetch API via CounterAPI.dev
-  document.addEventListener('DOMContentLoaded', function() {
-    const elements = document.querySelectorAll('.visit-count-val');
-    
-    if (elements.length === 0) return;
-
-    fetch('https://api.counterapi.dev/v1/bangmiOne7_portfolio/visits/up')
-      .then(res => {
-        if (!res.ok) throw new Error('Network response was not ok');
-        return res.json();
-      })
-      .then(data => {
-        if (data && typeof data.count !== 'undefined') {
-          const formattedCount = data.count.toLocaleString();
-          elements.forEach(el => el.textContent = formattedCount);
-        } else {
-          elements.forEach(el => el.textContent = '1');
-        }
-      })
-      .catch(err => {
-        console.warn('CounterAPI error or blocked by adblocker:', err);
-        // Fallback jika API gagal/diblokir adblocker
-        elements.forEach(el => el.textContent = '1');
-      });
-  });
-</script>
 </body>
 </html>
