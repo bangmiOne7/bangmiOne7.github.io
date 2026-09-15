@@ -50,11 +50,12 @@
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
         <span>System Status: Available for Opportunities</span>
       </div>
-          <!-- Visitor Counter Badge -->
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-xs font-mono">
+<!-- Visitor Counter Badge-->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-xs font-mono">
           <i class="fa-solid fa-eye text-blue-400"></i>
-          <span>Total Visits: <strong class="visit-count-val" class="text-blue-400">...</strong></span>
-          </div><br/>
+      <span>Total Visits: <strong class="visit-count-val text-blue-400">...</strong></span>
+      </div><br/>
+      
       <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
         Romi Putra, <span class="text-blue-400">A.Md.</span>
       </h1>
@@ -732,26 +733,31 @@
   </script>
 
 <script>
-    // Visitor Counter Fetch API via CounterAPI.dev
-    document.addEventListener('DOMContentLoaded', function() {
-      const elements = document.querySelectorAll('.visit-count-val');
-      
-      // Menggunakan CounterAPI.dev (Gratis & Stabil)
-      fetch('https://api.counterapi.dev/v1/bangmiOne7_portfolio/visits/up')
-        .then(res => res.json())
-        .then(data => {
-          if (data && data.count) {
-            const formattedCount = data.count.toLocaleString();
-            elements.forEach(el => el.textContent = formattedCount);
-          } else {
-            elements.forEach(el => el.textContent = '1');
-          }
-        })
-        .catch(err => {
-          // Jika first load atau network issue, tampilkan angka mulai dari 1
+  // Visitor Counter Fetch API via CounterAPI.dev
+  document.addEventListener('DOMContentLoaded', function() {
+    const elements = document.querySelectorAll('.visit-count-val');
+    
+    if (elements.length === 0) return;
+
+    fetch('https://api.counterapi.dev/v1/bangmiOne7_portfolio/visits/up')
+      .then(res => {
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.json();
+      })
+      .then(data => {
+        if (data && typeof data.count !== 'undefined') {
+          const formattedCount = data.count.toLocaleString();
+          elements.forEach(el => el.textContent = formattedCount);
+        } else {
           elements.forEach(el => el.textContent = '1');
-        });
-    });
-  </script>
+        }
+      })
+      .catch(err => {
+        console.warn('CounterAPI error or blocked by adblocker:', err);
+        // Fallback jika API gagal/diblokir adblocker
+        elements.forEach(el => el.textContent = '1');
+      });
+  });
+</script>
 </body>
 </html>
