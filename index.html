@@ -51,10 +51,11 @@
         <span>System Status: Available for Opportunities</span>
       </div>
   
-      <!-- Bikin ringkas tanpa label dobel -->
+      <!-- Visitor Counter Badge -->
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-xs font-mono">
           <i class="fa-solid fa-eye text-blue-400"></i>
-          <img src="https://api.visitorbadge.io/api/visitors?path=bangmiOne7.github.io&countColor=%2360a5fa&style=flat-square&labelColor=%230f172a" alt="Visits" class="h-4 inline-block rounded">
+          <span class="text-slate-400">visitors</span>
+          <span class="visit-count-val bg-blue-500 text-white font-bold px-1.5 py-0.5 rounded text-[10px]">...</span>
       </div>
       
       <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
@@ -733,7 +734,7 @@
     });
   </script>
 
-  <script>
+<script>
   document.addEventListener('DOMContentLoaded', function() {
     const elements = document.querySelectorAll('.visit-count-val');
     if (elements.length === 0) return;
@@ -741,26 +742,28 @@
     // Cek apakah user udah pernah 'hitung' di sesi browser ini
     const hasVisited = sessionStorage.getItem('has_visited');
 
-    // Jika belum visit di sesi ini, panggil endpoint hit / up
-    // Jika sudah, panggil endpoint read-only (atau ambil dari cache)
-    const isNewSession = !hasVisited;
-    
-    // Gunakan endpoint CounterAPI / CountAPI pilihanmu
-    // Contoh dengan CounterAPI:
-    const endpoint = isNewSession 
-      ? 'https://api.counterapi.dev/v1/bangmiOne7_portfolio/visits/up'
-      : 'https://api.counterapi.dev/v1/bangmiOne7_portfolio/visits';
+    // Namespace & Key untuk CountAPI
+    const namespace = 'bangmione7_portfolio_2026';
+    const key = 'visits';
+
+    // Jika belum visit di sesi ini = hit (+1), Jika sudah = get (hanya baca angka)
+    const endpoint = !hasVisited 
+      ? `https://api.countapi.xyz/hit/${namespace}/${key}`
+      : `https://api.countapi.xyz/get/${namespace}/${key}`;
 
     fetch(endpoint)
       .then(res => res.json())
       .then(data => {
-        if (data && data.count) {
-          elements.forEach(el => el.textContent = data.count.toLocaleString());
-          // Tandai bahwa sesi ini sudah dihitung
+        if (data && data.value !== undefined) {
+          elements.forEach(el => el.textContent = data.value.toLocaleString());
+          // Lock sesi browser biar pas refresh nggak nambah lagi
           sessionStorage.setItem('has_visited', 'true');
         }
       })
-      .catch(err => console.warn('Counter error:', err));
+      .catch(err => {
+        console.warn('Counter error:', err);
+        elements.forEach(el => el.textContent = '1');
+      });
   });
 </script>
 </body>
