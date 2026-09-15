@@ -739,36 +739,39 @@
     const counterElements = document.querySelectorAll('.visit-count-val');
     if (counterElements.length === 0) return;
 
-    // Kunci unik untuk website lu (ganti kalau mau reset hitungan dari nol)
+    const START_OFFSET = 16; 
     const siteId = 'romiputra-github-io'; 
     const hasVisited = sessionStorage.getItem('visited_session');
+    
+    // 1. Tampilkan dulu angka dari localStorage (kalau ada) biar INSTAN tanpa loading
+    const cachedCount = localStorage.getItem('last_known_count');
+    if (cachedCount) {
+      counterElements.forEach(el => el.textContent = Number(cachedCount).toLocaleString());
+    }
 
+    // 2. Fetch data terbaru di background
     try {
-      let visitCount;
+      const endpoint = !hasVisited 
+        ? `https://api.counterapi.dev/v1/${siteId}/visitors/up`
+        : `https://api.counterapi.dev/v1/${siteId}/visitors/`;
 
-      if (!hasVisited) {
-        // Kunjungan baru: Hit +1 ke server
-        const res = await fetch(`https://api.counterapi.dev/v1/${siteId}/visitors/up`);
-        const data = await res.json();
-        visitCount = data.count;
+      const res = await fetch(endpoint);
+      const data = await res.json();
+
+      if (data && data.count !== undefined) {
+        const totalVisits = Number(data.count) + START_OFFSET;
+        
+        // Update tampilan & simpan ke cache
+        counterElements.forEach(el => el.textContent = totalVisits.toLocaleString());
+        localStorage.setItem('last_known_count', totalVisits);
         sessionStorage.setItem('visited_session', 'true');
-      } else {
-        // Sudah pernah buka di sesi ini: Hanya baca angka tanpa nambah hit
-        const res = await fetch(`https://api.counterapi.dev/v1/${siteId}/visitors/`);
-        const data = await res.json();
-        visitCount = data.count;
-      }
-
-      // Tampilkan angka dengan format ribuan (misal: 1,250)
-      if (visitCount !== undefined) {
-        counterElements.forEach(el => el.textContent = Number(visitCount).toLocaleString());
       }
     } catch (err) {
-      console.warn('Counter API Error:', err);
-      // Fallback jika terjadi kendala jaringan
-      counterElements.forEach(el => {
-        if (el.textContent === '...') el.textContent = '1';
-      });
+      console.warn('Counter background sync failed:', err);
+      // Jika tak ada cache dan fetch gagal
+      if (!cachedCount) {
+        counterElements.forEach(el => el.textContent = (1 + START_OFFSET).toString());
+      }
     }
   });
 </script>
