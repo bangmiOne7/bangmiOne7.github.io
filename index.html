@@ -732,5 +732,36 @@
       if (e.key === 'Escape') closeModal();
     });
   </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const elements = document.querySelectorAll('.visit-count-val');
+    if (elements.length === 0) return;
+
+    // Cek apakah user udah pernah 'hitung' di sesi browser ini
+    const hasVisited = sessionStorage.getItem('has_visited');
+
+    // Jika belum visit di sesi ini, panggil endpoint hit / up
+    // Jika sudah, panggil endpoint read-only (atau ambil dari cache)
+    const isNewSession = !hasVisited;
+    
+    // Gunakan endpoint CounterAPI / CountAPI pilihanmu
+    // Contoh dengan CounterAPI:
+    const endpoint = isNewSession 
+      ? 'https://api.counterapi.dev/v1/bangmiOne7_portfolio/visits/up'
+      : 'https://api.counterapi.dev/v1/bangmiOne7_portfolio/visits';
+
+    fetch(endpoint)
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.count) {
+          elements.forEach(el => el.textContent = data.count.toLocaleString());
+          // Tandai bahwa sesi ini sudah dihitung
+          sessionStorage.setItem('has_visited', 'true');
+        }
+      })
+      .catch(err => console.warn('Counter error:', err));
+  });
+</script>
 </body>
 </html>
