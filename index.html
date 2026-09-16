@@ -23,6 +23,8 @@
   <style>
     html { scroll-behavior: smooth; }
   </style>
+  <!-- Counter -->
+  <script data-goatcounter="https://bangmi17.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased">
 
@@ -49,15 +51,7 @@
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-4">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
         <span>System Status: Available for Opportunities</span>
-      </div>
-  
-      <!-- Visitor Counter Badge -->
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-xs font-mono">
-          <i class="fa-solid fa-eye text-blue-400"></i>
-          <span class="text-slate-400">visitors</span>
-          <span class="visit-count-val bg-blue-500 text-white font-bold px-1.5 py-0.5 rounded text-[10px]">...</span>
-      </div>
-      
+      </div>    
       <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
         Romi Putra, <span class="text-blue-400">A.Md.</span>
       </h1>
@@ -733,32 +727,5 @@
       if (e.key === 'Escape') closeModal();
     });
   </script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const counterElements = document.querySelectorAll('.visit-count-val');
-    if (counterElements.length === 0) return;
-
-    // Angka dasar yang lu mau
-    const BASE_VISITS = 17;
-
-    // Ambil histori hit lokal
-    let extraHits = parseInt(localStorage.getItem('portfolio_extra_hits') || '0', 10);
-    const hasVisitedSession = sessionStorage.getItem('visited_this_session');
-
-    // Nambah hit cuma kalau sesi baru (bukan pas refresh)
-    if (!hasVisitedSession) {
-      extraHits += 1;
-      localStorage.setItem('portfolio_extra_hits', extraHits);
-      sessionStorage.setItem('visited_this_session', 'true');
-    }
-
-    // Render instan 0 milidetik
-    const totalVisits = BASE_VISITS + (extraHits - 1);
-    counterElements.forEach(el => {
-      el.textContent = totalVisits.toLocaleString();
-    });
-  });
-</script>
 </body>
 </html>
