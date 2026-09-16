@@ -631,8 +631,10 @@
     <!-- Widget Counter Visitor -->
     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/50 text-xs font-mono text-slate-300">
       <i class="fa-solid fa-eye text-emerald-400"></i>
-      <span>Total Visits:</span>
-      <span class="visit-count-val font-bold text-emerald-400">--</span>
+      <div class="text-sm text-gray-400 mt-2 flex items-center justify-center gap-2">
+  <i class="fas fa-eye"></i>
+  <span>Total Visitors: <strong id="stats-counter" class="visit-count-val text-indigo-400">Loading...</strong></span>
+</div>
     </div>
   </div>
 </footer>
@@ -741,26 +743,21 @@
     });
   </script>
 <script>
-  async function fetchGoatCounter() {
-    try {
-      // Mengambil data total hits secara langsung dari API GoatCounter
-      const response = await fetch('https://bangmi17.goatcounter.com/counter//TOTAL.json');
-      const data = await response.json();
-      
-      const counterElements = document.querySelectorAll('.visit-count-val');
-      counterElements.forEach(el => {
-        el.textContent = data.count || '0';
-      });
-    } catch (error) {
-      console.error('Error fetching GoatCounter stats:', error);
-      const counterElements = document.querySelectorAll('.visit-count-val');
-      counterElements.forEach(el => {
-        el.textContent = 'N/A';
-      });
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', fetchGoatCounter);
+  // Mengambil data total hits secara langsung dari API GoatCounter
+  fetch('https://bangmi17.goatcounter.com/counter/TOTAL.json')
+    .then(response => response.json())
+    .then(data => {
+      // Mengisi nilai angka ke elemen HTML
+      const countElement = document.querySelector('.visit-count-val');
+      if (countElement) {
+        countElement.innerText = data.value;
+      }
+    })
+    .catch(err => {
+      console.error('Gagal memuat statistik GoatCounter:', err);
+      const countElement = document.querySelector('.visit-count-val');
+      if (countElement) countElement.innerText = '-';
+    });
 </script>
 </body>
 </html>
