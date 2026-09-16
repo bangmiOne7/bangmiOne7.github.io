@@ -727,5 +727,32 @@
       if (e.key === 'Escape') closeModal();
     });
   </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', async function() {
+    const counterElements = document.querySelectorAll('.visit-count-val');
+    if (counterElements.length === 0) return;
+
+    // Angka offset kalau lu mau nambahin hitungan awal (misal 17)
+    const OFFSET = 17;
+
+    try {
+      // Ambil data statistik publik dari GoatCounter lu
+      const res = await fetch('https://bangmi17.goatcounter.com/counter/TOTAL.json');
+      const data = await res.json();
+      
+      if (data && data.count !== undefined) {
+        // Hilangkan format titik/koma dari GoatCounter, ubah ke angka
+        const countClean = parseInt(data.count.replace(/[^0-9]/g, ''), 10) || 0;
+        const totalVisits = countClean + OFFSET;
+        
+        counterElements.forEach(el => el.textContent = totalVisits.toLocaleString());
+      }
+    } catch (err) {
+      console.warn('Gagal ambil data GoatCounter:', err);
+      // Fallback jika API diproteksi/gagal
+      counterElements.forEach(el => el.textContent = OFFSET.toString());
+    }
+  });
+</script>
 </body>
 </html>
