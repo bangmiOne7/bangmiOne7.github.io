@@ -23,8 +23,8 @@
   <style>
     html { scroll-behavior: smooth; }
   </style>
-  <!-- Counter -->
-  <script data-goatcounter="https://bangmi17.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script data-goatcounter="https://bangmi17.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased">
 
@@ -51,7 +51,6 @@
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-4">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
         <span>System Status: Available for Opportunities</span>
-        <span class="visit-count-val">0</span>
       </div>    
       <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
         Romi Putra, <span class="text-blue-400">A.Md.</span>
@@ -633,7 +632,6 @@
       <i class="fa-solid fa-eye text-emerald-400"></i>
       <div class="text-sm text-gray-400 mt-2 flex items-center justify-center gap-2">
   <i class="fas fa-eye"></i>
-  <span>Total Visitors: <strong id="stats-counter" class="visit-count-val text-indigo-400">Loading...</strong></span>
 </div>
     </div>
   </div>
@@ -737,27 +735,9 @@
         document.body.style.overflow = 'auto';
       }
     }
-
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeModal();
     });
   </script>
-<script>
-  // Mengambil data total hits secara langsung dari API GoatCounter
-  fetch('https://bangmi17.goatcounter.com/counter/TOTAL.json')
-    .then(response => response.json())
-    .then(data => {
-      // Mengisi nilai angka ke elemen HTML
-      const countElement = document.querySelector('.visit-count-val');
-      if (countElement) {
-        countElement.innerText = data.value;
-      }
-    })
-    .catch(err => {
-      console.error('Gagal memuat statistik GoatCounter:', err);
-      const countElement = document.querySelector('.visit-count-val');
-      if (countElement) countElement.innerText = '-';
-    });
-</script>
 </body>
 </html>
